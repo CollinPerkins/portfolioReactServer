@@ -4,8 +4,9 @@ const User = require('../models/user');
 
 function tokenForUser(user) {
   const timestamp = new Date().getTime();
-  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.SECRET ? process.env.SECRET : config.secret);
+  return jwt.encode({ sub: user.id, iat: timestamp }, process.env.SECRET );
 }
+// config.secret
 
 exports.signin = function(req, res, next) {
   // User has already had their email and password auth'd
